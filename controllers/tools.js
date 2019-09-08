@@ -7,8 +7,12 @@ const find = async (req, res) => {
     if (!!tag)
         param = { tags: tag }
 
-    const tools = await Tool.find(param)
-    res.json(tools)
+    try {
+        const tools = await Tool.find(param)
+        res.status(201).json(tools)
+    } catch (err) {
+        res.status(500).send(err)
+    }
 }
 
 const create = async (req, res) => {
@@ -16,24 +20,29 @@ const create = async (req, res) => {
     try {
         await tool.save()
         res.status(201).json(tool)
-    } catch (e) {
-        res.send({
-            success: false,
-            errors: Object.keys(e.errors)
-        })
+    } catch (err) {
+        res.status(500).send(err)
     }
 }
 
 const patch = async (req, res) => {
     const { id } = req.params
-    const tool = await Tool.updateOne({ _id: id }, req.body)
-    res.status(201).json(tool)
+    try {
+        const tool = await Tool.updateOne({ _id: id }, req.body)
+        res.status(201).json(tool)
+    } catch (err) {
+        res.status(500).send(err)
+    }
 }
 
 const remove = async (req, res) => {
     const { id } = req.params
-    await Tool.deleteOne({ _id: id })
-    res.status(204).json()
+    try {
+        await Tool.deleteOne({ _id: id })
+        res.status(204).json()
+    } catch (err) {
+        res.status(500).send(err)
+    }
 }
 
 module.exports = {
