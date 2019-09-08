@@ -1,0 +1,18 @@
+{
+  "name": "BossaBox_BackEnd",
+  "version": "1.0.0",
+  "description": "Projeto Qualificatório para a BossaBox - Backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Renato Siqueira",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.13"
+  }
+}
