@@ -9,9 +9,9 @@ const find = async (req, res) => {
 
     try {
         const tools = await Tool.find(param)
-        res.status(201).json(tools)
+        res.status(200).json(tools)
     } catch (err) {
-        res.status(500).send(err)
+        res.status(500).json(err)
     }
 }
 
@@ -21,7 +21,7 @@ const create = async (req, res) => {
         await tool.save()
         res.status(201).json(tool)
     } catch (err) {
-        res.status(500).send(err)
+        res.status(500).json(err)
     }
 }
 
@@ -31,17 +31,17 @@ const patch = async (req, res) => {
         const tool = await Tool.updateOne({ _id: id }, req.body)
         res.status(201).json(tool)
     } catch (err) {
-        res.status(500).send(err)
+        res.status(500).json(err)
     }
 }
 
 const remove = async (req, res) => {
-    const { id } = req.params
     try {
+        const { id } = req.params
         await Tool.deleteOne({ _id: id })
         res.status(204).json()
     } catch (err) {
-        res.status(500).send(err)
+        res.status(500).json(err)
     }
 }
 
