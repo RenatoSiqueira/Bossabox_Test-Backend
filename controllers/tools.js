@@ -25,7 +25,7 @@ const create = async (req, res) => {
     }
 }
 
-const patch = async (req, res) => {
+const update = async (req, res) => {
     const { id } = req.params
     try {
         const tool = await Tool.updateOne({ _id: id }, req.body)
@@ -48,6 +48,6 @@ const remove = async (req, res) => {
 module.exports = {
     find,
     create,
-    patch,
+    update,
     remove
 }
