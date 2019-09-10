@@ -1,20 +1,15 @@
-require('dotenv').config()
+const app = require('./app')
 
-const express = require('express')
-const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
 
-const database = require('./database')
+const { MONGOSERVER, PORT } = process.env
+mongoose.Promise = global.Promise
 
-const toolsRouter = require('./routes/tools')
+const initialDatabase = require('./initialDatabase')
 
-const app = express()
-
-const { PORT } = process.env
-
-app.use(bodyParser.json())
-
-app.use('/tools', toolsRouter)
-
-database
-    .then(() => app.listen(PORT, () => console.log(`BossaBox Backend Server Running on port ${PORT}`)))
+mongoose.connect(MONGOSERVER, { useNewUrlParser: true })
+    .then(() => {
+        initialDatabase()
+        app.listen(PORT, () => console.log(`BossaBox Backend Server Running on port ${PORT}`))
+    })
     .catch(err => console.log(err))
