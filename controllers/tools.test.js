@@ -75,7 +75,7 @@ describe('Tools Feature', () => {
         })
 
         let id
-        before('To test Remove Item method, need an Valid ID', async () => {
+        before('To test Remove Item method, need a Valid ID', async () => {
             id = await ToolModel.findOne({})
             return true
         })
@@ -89,7 +89,7 @@ describe('Tools Feature', () => {
     })
 
     describe('UPDATE METHODS', () => {
-        before('To test Update Item method, need an Valid ID', async () => {
+        before('To test Update Item method, need a Valid ID', async () => {
             id = await ToolModel.findOne({})
             return true
         })
