@@ -20,10 +20,9 @@
 Sua tarefa é construir uma API e banco de dados para a [aplicação VUTTR (Very Useful Tools to Remember)](https://bossaboxbackend.herokuapp.com/tools). A aplicação é um simples repositório para gerenciar ferramentas com seus respectivos nomes, links, descrições e tags. Utilize um repositório Git (público, de preferência) para versionamento e disponibilização do código.
 
 ## Meta Mínima
-    Uma aplicação contendo uma API real simples, sem autenticação, que atenda os requisitos descritos abaixo, fazendo requisições à um banco de dados para persistência; README.md contendo informações básicas do projeto e como executá-lo; API Blueprint ou Swagger da aplicação. 
+Uma aplicação contendo uma API real simples, sem autenticação, que atenda os requisitos descritos abaixo, fazendo requisições à um banco de dados para persistência; README.md contendo informações básicas do projeto e como executá-lo; API Blueprint ou Swagger da aplicação. 
 
 ## Meta Completa
-    Os seguintes itens não são obrigatórios, mas darão mais valor ao seu trabalho (os em negrito são mais significativos para nós, se destacando como características para se tornar Tech Lead em squads)   
      - Uso de ferramentas externas que facilitem o seu trabalho; 
      - Cuidados especiais com otimização, padrões, entre outros
      - Migrations ou script para configuração do banco de dados utilizado
@@ -46,7 +45,7 @@ Sua tarefa é construir uma API e banco de dados para a [aplicação VUTTR (Very
 ### Documentação API
 ### GET tools
 ```
-Descrição: Retorna todos as 'Tools' cadastradas
+Descrição: Retorna todas as 'Tools' cadastradas
 
 GET /tools
 ```
@@ -190,7 +189,7 @@ docker run -p 3000:3000 bossabox-backend-challenge:latest
 ```
 
 # Online
-Você pode testa-lo em [https://bossaboxbackend.herokuapp.com/tools]((https://bossaboxbackend.herokuapp.com/tools))
+Você pode testa-lo em [https://bossaboxbackend.herokuapp.com/tools](https://bossaboxbackend.herokuapp.com/tools)
 ```
 Dados Adicionais:
 - Hospedagem: Heroku
