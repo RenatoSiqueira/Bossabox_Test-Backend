@@ -7,10 +7,10 @@
     - [Pré Instruções](#Pré-Instruções)
     - [Documentação API](#Documentação-API)
         - [GET tools](#GET-tools)
-        - [GET tools/:id](#GETtools/:id)
+        - [GET tools?tag={tag}](#GETtools?tag={tag})
         - [POST tools](#POST-tools)
-        - [PATCH tools/:id](#PATCH-tools/:id)
-        - [DELETE tools/:id](#DELETE-tools/:id)
+        - [PATCH tools/{id}](#PATCH-tools/{id})
+        - [DELETE tools/{id}](#DELETE-tools/{id})
     - [Rodando Testes](#Rodando-Testes)
     - [Conteinerização da aplicação](#Conteinerização-da-aplicação)
     - [Online](#online)
@@ -75,7 +75,7 @@ Resposta:
 ] 
 ```
 
-### GET tools/:id
+### GET tools?tag={tag}
 ```
 Descrição: Retorna apenas as 'Tools' que contenham a tag solicitada
 
@@ -134,11 +134,11 @@ Body:
 }
 ```
 
-### PATCH tools/:id
+### PATCH tools/{id}
 ```
 Descrição: Editar registro
 
-PATCH /tools/:id
+PATCH /tools/{id}
 Content-Type: application/json
 ```
 Body:
@@ -164,11 +164,11 @@ Body:
 }
 ```
 
-### DELETE tools/:id
+### DELETE tools/{id}
 ```
 Descrição: Remover registro
 
-DELETE /tools/:id
+DELETE /tools/{id}
 ```
 Resposta:
 ```
@@ -188,8 +188,11 @@ docker build -t bossabox-backend-challenge .
 docker run -p 3000:3000 bossabox-backend-challenge:latest
 ```
 
+# Swagger
+[https://bossaboxbackend.herokuapp.com/docs](https://bossaboxbackend.herokuapp.com/docs)
+
 # Online
-Você pode testa-lo em [https://bossaboxbackend.herokuapp.com/tools](https://bossaboxbackend.herokuapp.com/tools)
+Você pode usá-lo em [https://bossaboxbackend.herokuapp.com/tools](https://bossaboxbackend.herokuapp.com/tools)
 ```
 Dados Adicionais:
 - Hospedagem: Heroku

@@ -13,6 +13,6 @@ const app = express()
 app.use(bodyParser.json())
 
 app.use('/tools', toolsRouter)
-app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDoc))
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc))
 
 module.exports = app

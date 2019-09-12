@@ -43,7 +43,7 @@ describe('Tools Feature', () => {
                 done()
             })
         })
-        it('List One: Should be return one result when params sended', done => {
+        it('List All by Tag: Should be return all results when tag found', done => {
             request.get(`${server}?tag=node`, (err, response, body) => {
                 const _body = bodyParse(body)
                 expect(response.statusCode).to.equal(200)

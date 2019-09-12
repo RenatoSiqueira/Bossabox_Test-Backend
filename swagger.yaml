@@ -8,8 +8,6 @@ basePath: "/"
 tags:
 - name: "tools"
   description: "Métodos relacionados à Ferramentas (tools)"
-- name: "user"
-  description: "Métodos relacionados à Usuários"
 schemes:
 - "http"
 - "https"
@@ -20,13 +18,11 @@ paths:
       - "tools"
       summary: "Lista todas as ferramentas cadastradas"
       operationId: "listTool"
-      consumes:
-      - "application/json"
       produces:
       - "application/json"
       responses:
         200:
-          description: "Operação realizada com sucesso"
+          description: "Operação bem sucedida"
         500:
           description: "Internal Server Error"
     post:
@@ -35,122 +31,91 @@ paths:
       summary: "Adiciona uma nova ferramenta"
       description: ""
       operationId: "addTool"
-      consumes:
-      - "application/json"
       produces:
       - "application/json"
       parameters:
       - in: "body"
         name: "body"
-        description: "Ferramenta que será criada"
+        description: ""
         required: true
         schema:
           $ref: "#/definitions/ToolSchema"
       responses:
+        201:
+          description: "Operação bem sucedida"
+          schema:
+            $ref: "#/definitions/ToolSchema"
         500:
           description: "Internal Server Error"
   /tools?tag={tag}:
     get:
       tags:
       - "tools"
-      summary: "Lista ferramentas que contenham a tag selecionada"
+      summary: "Lista as ferramentas que contenham a tag solicitada"
       description: ""
-      operationId: "getToolByTag"
+      operationId: "toolsByTag"
       produces:
       - "application/json"
       parameters:
       - name: "tag"
         in: "path"
-        description: "Tag a ser buscada"
+        description: ""
         required: true
         type: "string"
       responses:
         200:
-          description: "successful operation"
+          description: "Operação bem sucedida"
           schema:
-            $ref: "#/definitions/Pet"
-        400:
-          description: "Invalid ID supplied"
-        404:
-          description: "Pet not found"
-      security:
-      - api_key: []
+            $ref: "#/definitions/ToolSchema"
+        500:
+          description: "Internal Server Error"
   /tools/{id}:
     patch:
       tags:
       - "tools"
-      summary: "Atualizar os dados da ferramenta selecionada"
+      summary: "Atualiza uma ferramenta"
       description: ""
-      operationId: "updatePetWithForm"
-      consumes:
-      - "application/x-www-form-urlencoded"
+      operationId: "updateTool"
       produces:
       - "application/json"
       parameters:
-      - name: "petId"
+      - name: "id"
         in: "path"
-        description: "ID of pet that needs to be updated"
+        description: ""
         required: true
-        type: "integer"
-        format: "int64"
-      - name: "name"
-        in: "formData"
-        description: "Updated name of the pet"
-        required: false
         type: "string"
-      - name: "status"
-        in: "formData"
-        description: "Updated status of the pet"
-        required: false
-        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Objeto contendo os dados atualizados"
+        required: true
+        schema:
+          $ref: "#/definitions/ToolSchema"
       responses:
-        405:
-          description: "Invalid input"
-      security:
-      - petstore_auth:
-        - "write:pets"
-        - "read:pets"
+        201:
+          description: "Operação bem sucedida"
+          schema:
+            $ref: "#/definitions/ToolSchema"
+        500:
+          description: "Internal Server Error"
     delete:
       tags:
       - "tools"
-      summary: "Remove uma ferramenta"
+      summary: "Remove uma ferramenta a partir do Id"
       description: ""
-      operationId: "deletePet"
+      operationId: "deleteTool"
       produces:
-      - "application/xml"
       - "application/json"
       parameters:
-      - name: "api_key"
-        in: "header"
-        required: false
-        type: "string"
-      - name: "petId"
+      - name: "id"
         in: "path"
-        description: "Pet id to delete"
+        description: ""
         required: true
-        type: "integer"
-        format: "int64"
+        type: "string"
       responses:
-        400:
-          description: "Invalid ID supplied"
-        404:
-          description: "Pet not found"
-      security:
-      - petstore_auth:
-        - "write:pets"
-        - "read:pets"
-securityDefinitions:
-  petstore_auth:
-    type: "oauth2"
-    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
-    flow: "implicit"
-    scopes:
-      write:pets: "modify pets in your account"
-      read:pets: "read your pets"
-  api_key:
-    type: "apiKey"
-    name: "api_key"
-    in: "header"
+        204:
+          description: "Operação bem sucedida"
+        500:
+          description: "Internal Server Error"
 definitions:
   ToolSchema:
     type: "object"
@@ -166,3 +131,5 @@ definitions:
         required: true
       tags:
          type: "array"
+         items:
+          type: "string"
