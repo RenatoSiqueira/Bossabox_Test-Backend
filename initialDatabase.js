@@ -1,6 +1,9 @@
 const Tool = require('./models/tool')
+const User = require('./models/user')
 
-const initialUser = async () => {
+const { INITIALUSER, INITIALUSERPASS } = process.env
+
+const initialTools = async () => {
     const results = await Tool.find({})
     if (results.length === 0) {
         Tool.insertMany([
@@ -26,4 +29,19 @@ const initialUser = async () => {
     }
 }
 
-module.exports = initialUser
+const initialUser = async () => {
+    const results = await User.countDocuments({})
+    if (results === 0) {
+        const user = new User({
+            username: INITIALUSER,
+            password: INITIALUSERPASS
+        })
+
+        await user.save()
+    }
+}
+
+module.exports = {
+    initialTools,
+    initialUser
+}

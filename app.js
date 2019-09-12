@@ -7,12 +7,15 @@ const YAML = require('yamljs')
 const swaggerDoc = YAML.load('./swagger.yaml')
 
 const toolsRouter = require('./routes/tools')
+const authRouter = require('./routes/auth')
 
 const app = express()
 
 app.use(bodyParser.json())
 
-app.use('/tools', toolsRouter)
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc))
+app.use('/auth', authRouter)
+app.use('/tools', toolsRouter)
+
 
 module.exports = app
