@@ -1,17 +1,40 @@
 swagger: "2.0"
 info:
-  description: "A aplicação é um simples repositório para gerenciar ferramentas com seus respectivos nomes, links, descrições e tags. For this sample, you can use the api key `special-key` to test the authorization     filters."
+  description: "A aplicação é um simples repositório para gerenciar ferramentas com seus respectivos nomes, links, descrições e tags. Neste exemplo você pode usar o User `AuthUser`, com Senha `authuser` para testar."
   version: "1.0.0"
   title: "VUTTR (Very Useful Tools to Remember)"
 host: "localhost:3000"
 basePath: "/"
 tags:
+- name: "auth"
+  description: "Autenticação do Usuário"
 - name: "tools"
   description: "Métodos relacionados à Ferramentas (tools)"
 schemes:
 - "http"
 - "https"
 paths:
+  /auth:
+    post:
+      tags:
+      - "auth"
+      summary: "Autentica um Usuário e lhe concede um Token"
+      description: ""
+      operationId: "authUser"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/UserSchema"
+      responses:
+        200:
+          description: "Operação bem sucedida"
+        401:
+          description: "Error: Unauthorized"
   /tools:
     get:
       tags:
@@ -47,6 +70,8 @@ paths:
             $ref: "#/definitions/ToolSchema"
         500:
           description: "Internal Server Error"
+      security:
+      - api_key: []
   /tools?tag={tag}:
     get:
       tags:
@@ -97,6 +122,8 @@ paths:
             $ref: "#/definitions/ToolSchema"
         500:
           description: "Internal Server Error"
+      security:
+      - api_key: []
     delete:
       tags:
       - "tools"
@@ -116,7 +143,23 @@ paths:
           description: "Operação bem sucedida"
         500:
           description: "Internal Server Error"
+      security:
+      - api_key: []
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "x-access-token"
+    in: "header"
 definitions:
+  UserSchema:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+        required: true
+      password:
+        type: "string"
+        required: true
   ToolSchema:
     type: "object"
     properties:

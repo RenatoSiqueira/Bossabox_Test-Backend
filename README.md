@@ -6,6 +6,7 @@
     - [Meta Completa](#meta-completa)
     - [Pré Instruções](#Pré-Instruções)
     - [Documentação API](#Documentação-API)
+        - [POST auth](#POST-auth)
         - [GET tools](#GET-tools)
         - [GET tools?tag={tag}](#GETtools?tag={tag})
         - [POST tools](#POST-tools)
@@ -13,6 +14,7 @@
         - [DELETE tools/{id}](#DELETE-tools/{id})
     - [Rodando Testes](#Rodando-Testes)
     - [Conteinerização da aplicação](#Conteinerização-da-aplicação)
+    - [Swagger](#swagger)
     - [Online](#online)
     - [To-Do](#to-do)
 
@@ -43,6 +45,34 @@ Uma aplicação contendo uma API real simples, sem autenticação, que atenda os
 ```
 
 ### Documentação API
+### POST auth
+```
+Descrição: Autentica um Usuário e lhe concede um Token
+
+POST /auth
+Content-Type: application/json
+```
+Body:
+```
+[ 
+  { 
+    "username": "AuthUser",
+    "password": "authuser"
+  }
+] 
+```
+Resposta:
+```
+Status: 200 OK
+Content-Type: application/json
+```
+Body:
+```
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkN2E5MWJkMjgyNGJmNGMyOGZiZTAzNSIsInVzZXJuYW1lIjoiQXV0aFVzZXIiLCJpYXQiOjE1NjgzMTYxMTJ9._IH1AKad3s0r05HEYUQK4APWyM2aNEX_9wCaTbu53vQ"
+}
+```
+
 ### GET tools
 ```
 Descrição: Retorna todas as 'Tools' cadastradas
@@ -104,9 +134,13 @@ Resposta:
 ### POST tools
 ```
 Descrição: Adicionar novo registro
+Atenção: Requer Autenticação
 
 POST /tools
 Content-Type: application/json
+Header: {
+  x-access-token: Token_Adquirido
+}
 ```
 Body:
 ```
@@ -137,9 +171,13 @@ Body:
 ### PATCH tools/{id}
 ```
 Descrição: Editar registro
+Atenção: Requer Autenticação
 
 PATCH /tools/{id}
 Content-Type: application/json
+Header: {
+  x-access-token: Token_Adquirido
+}
 ```
 Body:
 ```
@@ -167,8 +205,13 @@ Body:
 ### DELETE tools/{id}
 ```
 Descrição: Remover registro
+Atenção: Requer Autenticação
+
 
 DELETE /tools/{id}
+Header: {
+  x-access-token: Token_Adquirido
+}
 ```
 Resposta:
 ```
