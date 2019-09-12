@@ -3,7 +3,7 @@ info:
   description: "A aplicação é um simples repositório para gerenciar ferramentas com seus respectivos nomes, links, descrições e tags. Neste exemplo você pode usar o User `AuthUser`, com Senha `authuser` para testar."
   version: "1.0.0"
   title: "VUTTR (Very Useful Tools to Remember)"
-host: "https://bossaboxbackend.herokuapp.com"
+host: "bossaboxbackend.herokuapp.com"
 basePath: "/"
 tags:
 - name: "auth"
@@ -11,7 +11,6 @@ tags:
 - name: "tools"
   description: "Métodos relacionados à Ferramentas (tools)"
 schemes:
-- "http"
 - "https"
 paths:
   /auth:
