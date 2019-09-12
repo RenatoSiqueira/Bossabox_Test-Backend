@@ -28,7 +28,7 @@ mongoose
     .then(app.listen(PORT, () => console.log('Connected on Test Database')))
 
 describe('Tools Feature', () => {
-    before('Connecting to mongodb', async () => {
+    before('PRE: Rebuild Database', async () => {
         await ToolModel.deleteMany({})
         await initialDatabase()
         return true
