@@ -242,10 +242,3 @@ Dados Adicionais:
 - Banco de Dados: mLab
 - Continuous Deployment on Github Configurado
 ```
-
-# To-Do
-```
-- Swagger
-- Outras rotas, métodos, meios de autenticação com usuários, etc
-- Autenticação e autorização (OAuth, JWT)
-```
