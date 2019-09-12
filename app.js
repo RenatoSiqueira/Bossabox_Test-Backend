@@ -7,8 +7,6 @@ const toolsRouter = require('./routes/tools')
 
 const app = express()
 
-const { PORT } = process.env
-
 app.use(bodyParser.json())
 
 app.use('/tools', toolsRouter)
