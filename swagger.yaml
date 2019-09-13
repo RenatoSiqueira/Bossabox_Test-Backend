@@ -1,16 +1,19 @@
 swagger: "2.0"
 info:
-  description: "A aplicação é um simples repositório para gerenciar ferramentas com seus respectivos nomes, links, descrições e tags. Neste exemplo você pode usar o User `AuthUser`, com Senha `authuser` para testar."
+  description: "A aplicação é um simples repositório para gerenciar ferramentas com seus respectivos nomes, links, descrições e tags.\n Neste exemplo você pode usar o User `restrito`, com Senha `restrito` para testar as áreas restritas (com exceção da Seção Admin) ou\n utilizar o usuário `AuthUser`, com Senha `authuser` para acesso completo."
   version: "1.0.0"
-  title: "VUTTR (Very Useful Tools to Remember)"
-host: "bossaboxbackend.herokuapp.com"
+  title: "VUTTR (Very Useful Tools to Remember) bossaboxbackend.herokuapp.com"
+host: "localhost:3000"
 basePath: "/"
 tags:
 - name: "auth"
   description: "Autenticação do Usuário"
 - name: "tools"
   description: "Métodos relacionados à Ferramentas (tools)"
+- name: "admin"
+  description: "Seção Restrita ao Administrador"
 schemes:
+- "http"
 - "https"
 paths:
   /auth:
@@ -34,6 +37,22 @@ paths:
           description: "Operação bem sucedida"
         401:
           description: "Error: Unauthorized"
+  /admin:
+    get:
+      tags:
+      - "admin"
+      summary: "Seção Restrita ao Administrador"
+      description: ""
+      operationId: "listTool"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Operação bem sucedida"
+        401:
+          description: "Error: Unauthorized"
+      security:
+      - api_key: []
   /tools:
     get:
       tags:

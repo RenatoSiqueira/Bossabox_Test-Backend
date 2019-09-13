@@ -32,12 +32,19 @@ const initialTools = async () => {
 const initialUser = async () => {
     const results = await User.countDocuments({})
     if (results === 0) {
-        const user = new User({
+        const adminUser = new User({
             username: INITIALUSER,
-            password: INITIALUSERPASS
+            password: INITIALUSERPASS,
+            roles: ['restrito', 'admin']
         })
+        await adminUser.save()
 
-        await user.save()
+        const restritoUser = new User({
+            username: 'restrito',
+            password: 'restrito',
+            roles: ['restrito']
+        })
+        await restritoUser.save()
     }
 }
 

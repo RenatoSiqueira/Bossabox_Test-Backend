@@ -5,6 +5,7 @@
     - [Meta Mínima](#meta-mínima)
     - [Meta Completa](#meta-completa)
     - [Pré Instruções](#Pré-Instruções)
+    - [Instruções](#Instruções)
     - [Documentação API](#Documentação-API)
         - [POST auth](#POST-auth)
         - [GET tools](#GET-tools)
@@ -44,10 +45,23 @@ Uma aplicação contendo uma API real simples, sem autenticação, que atenda os
 3. Yarn start ou Npm start
 ```
 
+### Instruções
+Por padrão, dois usuários são criados.
+```
+Usuário: AuthUser
+Senha: authuser
+Características: Possui permissões Administrativas e, portanto livre acesso.
+
+Usuário: restrito
+Senha: restrito
+Características: Possui permissões Restritas (É impedido de acessar à seção Admin).
+```
+
+
 ### Documentação API
 ### POST auth
 ```
-Descrição: Autentica um Usuário e lhe concede um Token
+Descrição: Autentica um Usuário e lhe concede um Token com suas permissões
 
 POST /auth
 Content-Type: application/json
