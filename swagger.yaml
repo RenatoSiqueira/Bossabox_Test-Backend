@@ -2,8 +2,8 @@ swagger: "2.0"
 info:
   description: "A aplicação é um simples repositório para gerenciar ferramentas com seus respectivos nomes, links, descrições e tags.\n Neste exemplo você pode usar o User `restrito`, com Senha `restrito` para testar as áreas restritas (com exceção da Seção Admin) ou\n utilizar o usuário `AuthUser`, com Senha `authuser` para acesso completo."
   version: "1.0.0"
-  title: "VUTTR (Very Useful Tools to Remember) bossaboxbackend.herokuapp.com"
-host: "localhost:3000"
+  title: "VUTTR (Very Useful Tools to Remember)"
+host: "bossaboxbackend.herokuapp.com"
 basePath: "/"
 tags:
 - name: "auth"
@@ -13,7 +13,6 @@ tags:
 - name: "admin"
   description: "Seção Restrita ao Administrador"
 schemes:
-- "http"
 - "https"
 paths:
   /auth:
