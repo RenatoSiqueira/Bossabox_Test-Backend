@@ -1,5 +1,6 @@
 const Tool = require('./models/tool')
 const User = require('./models/user')
+const { generatePassHash } = require('./utils/auth')
 
 const { INITIALUSER, INITIALUSERPASS } = process.env
 
@@ -34,14 +35,14 @@ const initialUser = async () => {
     if (results === 0) {
         const adminUser = new User({
             username: INITIALUSER,
-            password: INITIALUSERPASS,
+            password: generatePassHash(INITIALUSERPASS),
             roles: ['restrito', 'admin']
         })
         await adminUser.save()
 
         const restritoUser = new User({
             username: 'restrito',
-            password: 'restrito',
+            password: generatePassHash('restrito'),
             roles: ['restrito']
         })
         await restritoUser.save()

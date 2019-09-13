@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const toolsController = require('../controllers/tools')
-const { permission } = require('../controllers/auth')
+const { permission } = require('../utils/auth')
 
 router
     .get('/', toolsController.find)

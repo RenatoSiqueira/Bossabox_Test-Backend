@@ -55,6 +55,8 @@ Características: Possui permissões Administrativas e, portanto livre acesso.
 Usuário: restrito
 Senha: restrito
 Características: Possui permissões Restritas (É impedido de acessar à seção Admin).
+
+Todas as senhas são criptografadas.
 ```
 
 

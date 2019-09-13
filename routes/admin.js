@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const { permission } = require('../controllers/auth')
+const { permission } = require('../utils/auth')
 
 router
     .use('/', permission('admin'))
